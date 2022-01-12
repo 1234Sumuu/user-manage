@@ -17,5 +17,32 @@
     </head>
     <body class="antialiased">
         <h3>Laravel User Managment</h3>
+        <a href="{{route('posts')}}">Show Posts</a>
+        <a href="{{route('posts.view')}}">Show Posts with View</a>
+
+        <form action="{{route('test-post')}}" method="POST">
+            @csrf
+            <input type="text" name="username" placeholder="user name">
+            <input type="password" name="password" placeholder="user password">
+            <button type="submit">Button </button>
+        </form>
+        <br>
+        <br>
+        <br>
+        <form action="{{route('test-post-update', 10)}}" method="POST">
+            @method('PUT')
+            @csrf
+            <input type="text" name="username" placeholder="user name">
+            <input type="password" name="password" placeholder="user password">
+            <button type="submit">Update</button>
+        </form>
+        <br>
+        <br>
+        <br>
+        <form action="{{route('test-post-delete', 10)}}" method="POST">
+            @method('delete')
+            @csrf
+            <button type="submit">Delete</button>
+        </form>
     </body>
 </html>
