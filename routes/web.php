@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('tasks', TasksController::class);
 
 
+
     //Admin Routes
+
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
 
@@ -22,11 +25,13 @@ use Illuminate\Support\Facades\Route;
         Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
     });
 
+
     // Frontend Routes
 
 Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::get('/posts/{id}', [PagesController::class, 'postShow'])->name('posts.show');
 Route::get('/categories/{id}', [PagesController::class, 'categoriesShow'])->name('categories.index');
+
 
 
 // Route::get('/test', function () {
