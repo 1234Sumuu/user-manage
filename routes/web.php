@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 
 
     //Admin Routes
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('index');
-
-        Route::get('/users', [UsersController::class, 'index'])->name('users.index');
-        Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
-        Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
-        Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
-    });
+    Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
+    Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
+    Route::get('/users/edit/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/users/update/{id}', [UsersController::class, 'update'])->name('users.update');
+    Route::delete('/users/delete/{id}', [UsersController::class, 'destroy'])->name('users.delete');
+});
 
 
     // Frontend Routes
@@ -31,7 +31,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::get('/posts/{id}', [PagesController::class, 'postShow'])->name('posts.show');
 Route::get('/categories/{id}', [PagesController::class, 'categoriesShow'])->name('categories.index');
-
 
 
 // Route::get('/test', function () {
